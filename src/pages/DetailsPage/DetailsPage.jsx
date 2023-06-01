@@ -1,5 +1,13 @@
 function DetailsPage() {
-  return <h1>DetailsPage</h1>;
+  return <div>
+    <h1>DetailsPage</h1>;
+
+    </div>
+
 }
 
 export default DetailsPage;
+
+
+
+
