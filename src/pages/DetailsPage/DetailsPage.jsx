@@ -34,8 +34,14 @@ function DetailsPage(props) {
     <div className="project-details">
       {gallery && (
         <div>
+          <h2>Details</h2>
           <h1>{gallery.title}</h1>
+          <img src={gallery.image} />
           <p>{gallery.description}</p>
+          <a href={gallery.link} target="_blank" />
+          <p>{gallery.reviews}</p>
+
+         
         </div>
       )}
 

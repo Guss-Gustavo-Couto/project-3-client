@@ -20,13 +20,11 @@ function GalleryPage(props) {
         return (
           <div key={gallery._id} className="gallery">
             <p>{gallery.title}</p>
+            <a href={gallery.link} target="_blank">Go To WebSite</a>
             <img src={gallery.image}/>
             <p>
-              <Link to={`/details/${gallery._id}`}>VIEW DETAILS</Link>
+              <Link to={`/details/${gallery._id}`}>View Details</Link>
             </p>
-            <p>{gallery.description}</p>
-            <p>{gallery.reviews}</p>
-
           </div>
         );
       })}

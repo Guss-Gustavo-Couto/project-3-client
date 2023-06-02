@@ -1,5 +1,5 @@
 import { useState } from "react";
-import exampleService from "../../services/example.service";
+import exempleService from "../../services/gallery.service";
 
 function SubmitPage(props) {
   const [title, setTitle] = useState("");
