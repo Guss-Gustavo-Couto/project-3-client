@@ -1,5 +1,6 @@
 import { useState } from "react";
-import exempleService from "../../services/gallery.service";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SubmitPage(props) {
   const [title, setTitle] = useState("");
@@ -8,21 +9,27 @@ function SubmitPage(props) {
   const [description, setDescription] = useState("");
   const [reviews, setReviews] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const {galleryId} = useParams();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const requestBody = { title, image, link, description, reviews };
 
-    exampleService.createGallery(requestBody)
-      .then(() => {
+    try{
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/submit`, requestBody);
+      
         setTitle("");
         setImage("");
         setLink("");
         setDescription("");
         setReviews("");
-        props.refreshGallerys();
-      })
-      .catch((error) => console.log(error));
+        navigate(`/backoffice`)
+    }
+      catch(error){
+        console.log(error);
+      }
   };
 
   return (
