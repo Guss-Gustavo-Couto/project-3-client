@@ -26,6 +26,7 @@ function App() {
         <Route path="/submit" element={<SubmitPage />} />
         <Route path="/comunity" element={<ComunityPage />} />
         <Route path="/backoffice" element={<BackOfficePage />} />
+        <Route path="/details" element={<DetailsPage />} />
 
         <Route
           path="/profile"

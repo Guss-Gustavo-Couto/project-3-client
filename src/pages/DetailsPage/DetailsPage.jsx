@@ -1,39 +1,49 @@
-import {useParams, Link} from "react-router-dom";
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
-function GalleryDetailsPage(props) {
- 
-  const [gallery, setGallery] = useState("");
-  const {galleryId} = useParams();
+function DetailsPage(props) {
+  // write state. By default it'll be null because we don't have
+  // the project
+  const [gallery, setGallery] = useState(null);
 
-  const {gallerys} = props;
+  // grab the ProjectId from route params
+  const { galleryId } = useParams();
 
-  useEffect(()=>{
-        const foundGallery = gallerys.find((oneGallery)=>{
-        return oneGallery._id === galleryId;
-    })
+  // function to call axios to do a GET request
+  // to find a Project by the Id.
+  const getGallery = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/details/${galleryId}`)
+      .then((response) => {
+        const oneGallery = response.data;
+        setGallery(oneGallery);
+      })
+      .catch((error) => console.log(error));
+  };
 
-    setGallery(foundGallery);
+  // Side-effect after initial render of the component.
+  // The empty array must be as a parameter to tell to React that
+  // it'll happen after it renders the component
 
-  }, [gallerys])
+  useEffect(() => {
+    getGallery();
+  }, []);
 
   return (
-    <div>
-        {   
-            gallery && (
-            <div>
-                <h2>{gallery.name}</h2>
-                <h3>Tech Stack: {gallery.technologies}</h3>
-                <p>{gallery.description}</p>
-                <Link to="/gallerys">Back</Link>
-            </div>
-        )}
+    <div className="project-details">
+      {gallery && (
+        <div>
+          <h1>{gallery.title}</h1>
+          <p>{gallery.description}</p>
+        </div>
+      )}
+
+      <Link to="/gallery">
+        <button>Back to Gallery</button>
+      </Link>
     </div>
-  )
+  );
 }
 
-export default GalleryDetailsPage;
-
-
-
-
+export default DetailsPage;

@@ -19,11 +19,14 @@ function GalleryPage(props) {
       {gallerys.map((gallery) => {
         return (
           <div key={gallery._id} className="gallery">
-            <h3>
-              <Link to={`/gallerys/${gallery._id}`}>VIEW DETAILS</Link>
-              <a href="{gallery.link}">VISIT WEB SITE</a>
-            </h3>
             <p>{gallery.title}</p>
+            <img src={gallery.image}/>
+            <p>
+              <Link to={`/details/${gallery._id}`}>VIEW DETAILS</Link>
+            </p>
+            <p>{gallery.description}</p>
+            <p>{gallery.reviews}</p>
+
           </div>
         );
       })}
