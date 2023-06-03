@@ -21,6 +21,7 @@ function GalleryPage(props) {
           <div key={gallery._id} className="gallery">
             <h3>
               <Link to={`/gallerys/${gallery._id}`}>VIEW DETAILS</Link>
+              <br/>
               <a href="{gallery.link}">VISIT WEB SITE</a>
             </h3>
             <p>{gallery.title}</p>
