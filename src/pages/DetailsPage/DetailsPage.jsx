@@ -30,3 +30,5 @@ function GalleryDetailsPage(props) {
     </div>
   );
 }
+
+export default GalleryDetailsPage;

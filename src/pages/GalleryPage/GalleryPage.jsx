@@ -25,6 +25,11 @@ function GalleryPage(props) {
               <a href="{gallery.link}">VISIT WEB SITE</a>
             </h3>
             <p>{gallery.title}</p>
+            <a href={gallery.link} target="_blank">Go To WebSite</a>
+            <img src={gallery.image}/>
+            <p>
+              <Link to={`/details/${gallery._id}`}>View Details</Link>
+            </p>
           </div>
         );
       })}

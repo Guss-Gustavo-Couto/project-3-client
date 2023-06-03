@@ -14,6 +14,7 @@ import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import BackOfficeEdit from "./pages/BackOfficeEdit/BackOfficeEdit";
 
 function App() {
   return (
@@ -26,9 +27,11 @@ function App() {
         <Route path="/submit" element={<SubmitPage />} />
         <Route path="/comunity" element={<ComunityPage />} />
         <Route path="/backoffice" element={<BackOfficePage />} />
+        <Route path="/backoffice/:galleryId" element={<BackOfficeEdit />} />
+        <Route path="/details/:galleryId" element={<DetailsPage />} />
 
         <Route
-          path="/profile"
+          path="/profile/:userId"
           element={
             <IsPrivate>
               <ProfilePage />
