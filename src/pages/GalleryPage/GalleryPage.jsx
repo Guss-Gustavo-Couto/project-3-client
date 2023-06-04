@@ -23,6 +23,7 @@ function GalleryPage(props) {
               <p>{gallery.title}</p>
               <a href={gallery.link} target="_blank">Go To WebSite</a>
               <img src={gallery.image}/>
+              <p>{average}</p>
               
                 <Link to={`/details/${gallery._id}`}>View Details</Link>
                 <p>"gallery.review.rating"</p>  

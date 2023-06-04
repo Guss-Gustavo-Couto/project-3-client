@@ -76,7 +76,7 @@ function GalleryDetailsPage(props) {
         </div>
       )}
 
-      <h4>Leave a Review!</h4>
+      <h4>Leave a Review!</h4><p >Only Logged in Users can create a review:</p>
 
       <form className="total-form" onSubmit={handleReviewSubmit}>
         <label htmlFor="rating" className="form-label">
