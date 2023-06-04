@@ -26,8 +26,25 @@ function GalleryDetailsPage(props) {
     const form = event.target;
     const formData = new FormData(form);
 
+    const descriptionFromForm = formData.get('description')
+    const ratingFromForm = formData.get('rating')
+    
+    const body = {
+      description: descriptionFromForm,
+      rating: ratingFromForm,
+      galleryId: galleryId
+    }
+
+    const authToken = localStorage.getItem('authToken')
+    console.log('---> ', authToken);
+
+
     axios
-      .post(`/review/create/${galleryId}`, formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}/details`, body, {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      })
       .then((response) => {
         // Refresh the gallery details after successful review submission
         getGallery();
@@ -39,7 +56,7 @@ function GalleryDetailsPage(props) {
 
   const handleReviewDelete = (reviewId) => {
     axios
-      .post(`/review/delete/${reviewId}`)
+      .delete(`${process.env.REACT_APP_SERVER_URL}/details/${reviewId}`)
       .then((response) => {
         // Refresh the gallery details after successful review deletion
         getGallery();
@@ -74,13 +91,13 @@ function GalleryDetailsPage(props) {
           />
         </label>
         <br />
-        <label htmlFor="content" className="form-label">
+        <label htmlFor="description" className="form-label">
           Content:
         </label>
         <br />
         <textarea
           className="input-field-form"
-          name="content"
+          name="description"
           id="content"
           cols="30"
           rows="5"
@@ -92,18 +109,18 @@ function GalleryDetailsPage(props) {
         </button>
       </form>
 
-      <h4 className="bold">Last Reviews!</h4>
+      {gallery && gallery.reviews?.length > 0 && <h4 className="bold">Last Reviews!</h4>}
       {gallery &&
         gallery.reviews.map((review) => (
           <div key={review._id} className="width-percentage">
             <span className="bold">By: </span>
-            <span>{review.author.username}</span>
+            <span>{review.author.name}</span>
             <br />
             <span className="bold">Rating: </span>
             <span>{review.rating}</span>
             <br />
             <span className="bold">Review: </span>
-            <span>{review.content}</span>
+            <span>{review.description}</span>
             <br />
             <br />
             <button
