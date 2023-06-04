@@ -1,33 +1,33 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function HomePage() {
-  const [gallery, setGallery] = useState([]);
+  const [gallerys, setGallerys] = useState([]);
 
-  const getAllGallerys = () => {};
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/api/`)
+      .then((response) => {
+        setGallerys(response.data);
+      });
+  }, []);
+
+
+  if(!gallerys || !gallerys.length){
+    return null
+  }
 
   return (
     <div>
       <h1>Home page</h1>
       <h2>What's New</h2>
-      <div>
-        <div>
-          <img style={{ width: '100%' }} src={new1.imageUrl} alt={new1.title} />
-          <h4>{new1.title}</h4>
-        </div>
-        <div>
-          <img style={{ width: '100%' }} src={new2.image} alt={new2.title} />
-          <h4>{new2.title}</h4>
-        </div>
-        <div>
-          <img style={{ width: '100%' }} src={new3.image} alt={new3.title} />
-          <h4>{new3.title}</h4>
-        </div>
-        <div>
-          <img class="rounded-3" style={{ width: '100%' }} src={new4.imageUrl} alt={new4.title} />
-          <h4>{new4.title}</h4>
-        </div>
-      </div>
+      {gallerys.slice(0,4).map((gallery) => {
+          return <div>
+          <img style={{ width: '100%' }} src={gallery.imageUrl} alt={gallery.title} />
+          <h4>{gallery.title}</h4>
+          </div>
+      })}
       <h2>About</h2>
       <p></p>
     </div>
@@ -35,4 +35,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

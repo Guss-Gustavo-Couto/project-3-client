@@ -49,7 +49,7 @@ function EditProfilePage() {
 
     // store title, description that is going to be received
     // in ExpressJS as req.body.
-    const requestBody = { name, description };
+    const requestBody = { name, description, media, image };
 
     try {
       axios.put(

@@ -13,6 +13,10 @@ function GalleryPage(props) {
       });
   }, []);
 
+  if(!gallerys){
+    return null
+  }
+
   return (
     <div>
       <h2>Gallery</h2>
@@ -23,10 +27,10 @@ function GalleryPage(props) {
               <p>{gallery.title}</p>
               <a href={gallery.link} target="_blank">Go To WebSite</a>
               <img src={gallery.image}/>
-              <p>{average}</p>
+              {gallery.average && <p>avg rating: {gallery.average}</p>}
               
                 <Link to={`/details/${gallery._id}`}>View Details</Link>
-                <p>"gallery.review.rating"</p>  
+                 
               
             </div>
           ); 
@@ -39,4 +43,4 @@ function GalleryPage(props) {
   );
 }
 
-export default GalleryPage; 
+export default GalleryPage;
