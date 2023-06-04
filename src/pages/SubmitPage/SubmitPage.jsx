@@ -25,7 +25,7 @@ function SubmitPage(props) {
         setLink("");
         setDescription("");
         setReviews("");
-        navigate(`/backoffice`)
+        navigate(`/submited`)
     }
       catch(error){
         console.log(error);

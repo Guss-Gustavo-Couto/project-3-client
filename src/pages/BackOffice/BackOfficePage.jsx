@@ -4,7 +4,6 @@ import axios from "axios";
 
 function BackOfficePage(props) {
   const [gallerys, setGallerys] = useState([]);
-  const [gallery, setGallery] = useState({});
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/admin`).then((response) => {
@@ -12,14 +11,17 @@ function BackOfficePage(props) {
     });
   }, []);
 
-  if (gallery.isaproved === false) {
     return (
       <div>
         <h2>BackOffice Page</h2>
         {gallerys.map((gallery) => {
-          return (
-            <div key={gallery._id}>
+          if(gallery.isaproved){
+            return null
+          }else {
+            return (
+              <div key={gallery._id}>
               <p>{gallery.title}</p>
+              <p>{""+gallery.isaproved}</p>
               <a href={gallery.link} target="_blank">
                 Go To WebSite
               </a>
@@ -27,15 +29,11 @@ function BackOfficePage(props) {
               <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
             </div>
           );
+        }
         })}
       </div>
     );
-  } else {
-    return (
-      <div>
-      </div>
-    )
-  }
+  
 }
 
 export default BackOfficePage;

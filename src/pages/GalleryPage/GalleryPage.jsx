@@ -17,24 +17,25 @@ function GalleryPage(props) {
     <div>
       <h2>Gallery</h2>
       {gallerys.map((gallery) => {
-        return (
-          <div key={gallery._id} className="gallery">
-            <h3>
-              <Link to={`/gallerys/${gallery._id}`}>VIEW DETAILS</Link>
-              <br/>
-              <a href="{gallery.link}">VISIT WEB SITE</a>
-            </h3>
-            <p>{gallery.title}</p>
-            <a href={gallery.link} target="_blank">Go To WebSite</a>
-            <img src={gallery.image}/>
-            <p>
-              <Link to={`/details/${gallery._id}`}>View Details</Link>
-            </p>
-          </div>
-        );
+        if(gallery.isaproved){
+          return (
+            <div key={gallery._id} className="gallery">
+              <p>{gallery.title}</p>
+              <a href={gallery.link} target="_blank">Go To WebSite</a>
+              <img src={gallery.image}/>
+              
+                <Link to={`/details/${gallery._id}`}>View Details</Link>
+                <p>"gallery.review.rating"</p>  
+              
+            </div>
+          ); 
+          
+        }else {
+          return null
+        }
       })}
     </div>
   );
 }
 
-export default GalleryPage;
+export default GalleryPage; 
