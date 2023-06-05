@@ -62,7 +62,24 @@ function EditProfilePage() {
       setMedia("");
       setImage("");
 
-      navigate("/");
+      navigate("/comunity");
+    } catch (error) {
+      console.log(error);
+    }
+  }; 
+
+  // ******** this method handles the file upload ********
+  const handleFileUpload = async (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    try {
+      const uploadData = new FormData();
+      uploadData.append("image", e.target.files[0]);
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/upload`,
+        uploadData
+      );
+      console.log(response.data.fileUrl);
+      setImage(response.data.fileUrl);
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +117,7 @@ function EditProfilePage() {
         <input type="text" name="media" value={media} onChange={handleMedia} />
 
         <label>Image:</label>
-        <input type="text" name="image" value={image} onChange={handleImage} />
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
 
         <button type="submit">Edit</button>
       </form>

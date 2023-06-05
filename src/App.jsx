@@ -11,6 +11,7 @@ import SubmitedPage from "./pages/SubmitedPage/SubmitedPage";
 import ComunityPage from "./pages/ComunityPage/ComunityPage";
 import BackOfficePage from "./pages/BackOffice/BackOfficePage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
+import CheckPage from "./pages/CheckPage/CheckPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/backoffice" element={<BackOfficePage />} />
         <Route path="/backoffice/:galleryId" element={<BackOfficeEdit />} />
         <Route path="/details/:galleryId" element={<DetailsPage />} />
+        <Route path="/check" element={<CheckPage />} />
 
         <Route
           path="/profile/:userId"

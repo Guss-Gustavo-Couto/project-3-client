@@ -2,58 +2,54 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-function SubmitPage(props) {
+function SubmitPage() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
   const [reviews, setReviews] = useState("");
 
-  
+  const navigate = useNavigate();
 
-    // ******** this method handles the file upload ********
-    const handleFileUpload = (e) => {
-      // console.log("The file to be uploaded is: ", e.target.files[0]);
-   
+  // ******** this method handles the file upload ********
+  const handleFileUpload = async (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    try {
       const uploadData = new FormData();
-   
-      // imageUrl => this name has to be the same as in the model since we pass
-      // req.body to .create() method when creating a new movie in '/api/movies' POST route
-      uploadData.append("imageUrl", e.target.files[0]);
-   
-      service
-        .uploadImage(uploadData)
-        .then(response => {
-          // console.log("response is: ", response);
-          // response carries "fileUrl" which we can use to update the state
-          setImageUrl(response.fileUrl);
-        })
-        .catch(err => console.log("Error while uploading the file: ", err));
-    };
+      uploadData.append("image", e.target.files[0]);
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/upload`,
+        uploadData
+      );
+      console.log(response.data.fileUrl);
+      setImage(response.data.fileUrl);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const requestBody = { title, image, link, description, reviews };
 
-    try{
+    try {
       axios.post(`${process.env.REACT_APP_SERVER_URL}/submit`, requestBody);
-      
-        setTitle("");
-        setImage("");
-        setLink("");
-        setDescription("");
-        setReviews("");
-        navigate(`/submited`)
+
+      setTitle("");
+      setImage("");
+      setLink("");
+      setDescription("");
+      setReviews("");
+      navigate(`/submited`);
+    } catch (error) {
+      console.log(error);
     }
-      catch(error){
-        console.log(error);
-      }
   };
 
   return (
     <div className="add-project">
+      <br />
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input
@@ -62,15 +58,11 @@ function SubmitPage(props) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-
+        <br />
+        <br />
         <label>Image:</label>
-        <input
-          type="text"
-          name="image"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
+        <br />
         <label>Description:</label>
         <textarea
           type="text"
@@ -78,7 +70,8 @@ function SubmitPage(props) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
+        <br />
+        <br />
         <label>Link:</label>
         <input
           type="text"
@@ -86,7 +79,7 @@ function SubmitPage(props) {
           value={link}
           onChange={(e) => setLink(e.target.value)}
         />
-
+        <br />
         <button type="submit">Submit</button>
       </form>
     </div>

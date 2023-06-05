@@ -50,6 +50,17 @@ function BackOfficeEdit() {
       console.log(error);
     }
   };
+
+  const handleGalleryDelete = (galleryId) => {
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/admin/${galleryId}`)
+      .then((response) => {
+        // Refresh the gallery details after successful review deletion
+        getGallery();
+        navigate("/backoffice");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="add-project">
       <h1>BackOffice Page</h1>
@@ -104,7 +115,13 @@ function BackOfficeEdit() {
         <label htmlFor="isaproved">True</label>
 
         <button type="submit">Submit</button>
-        <button type="submit">Submit</button>
+        <button
+              className="link-button"
+              type="button"
+              onClick={() => handleGalleryDelete(galleryId)}
+            >
+              Delete
+            </button>
       </form>
     </div>
   );

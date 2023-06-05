@@ -25,6 +25,7 @@ function ComunityPage(props) {
         );
       })}
     </div>
+    
   );
 }
 
