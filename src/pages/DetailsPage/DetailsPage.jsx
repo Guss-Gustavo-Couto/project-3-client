@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
+
 function GalleryDetailsPage(props) {
   const [gallery, setGallery] = useState(null);
 

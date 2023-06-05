@@ -70,6 +70,19 @@ function EditProfilePage() {
 
   return (
     <div>
+       {/* <iframe
+        src="https://smashthewalls.com/"
+        title="Background"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          zIndex: -1,
+          }}
+      ></iframe> */}
       <h3>Edit the Profile</h3>
 
       <form onSubmit={handleFormSubmit}>
