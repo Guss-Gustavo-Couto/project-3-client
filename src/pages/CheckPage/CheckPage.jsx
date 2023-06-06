@@ -36,7 +36,7 @@ function CheckPage() {
 
   return (
     <div>
-      <h1></h1>
+      <h3>Prove us you deserve to be an Idiotile and complete this INUTIL checkbox chalenge in less than 1 minute!</h3>
       <br />
       <input type="checkbox" id="01" name="01" value="checked" />
       <input type="checkbox" id="02" name="02" value="checked" />

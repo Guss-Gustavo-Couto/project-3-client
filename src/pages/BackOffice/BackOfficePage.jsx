@@ -40,25 +40,46 @@ function BackOfficePage(props) {
 
   return (
     <div>
-      <h2>BackOffice Page</h2>
+      <h2>BackOffice - Waiting For Submission</h2>
       {gallerys.map((gallery) => {
         if (gallery.isaproved) {
-          return null;
+          return(null)
+            
         } else {
           return (
-            <div key={gallery._id}>
+            <div key={gallery._id} className="gallery-card">
               <p>{gallery.title}</p>
               <p>{"" + gallery.isaproved}</p>
               <a href={gallery.link} target="_blank">
                 Go To WebSite
               </a>
-              <img src={gallery.image} />
+              <img src={gallery.image} className="gallery-img"/>
+              <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
+            </div>
+          );
+        }
+      })}
+      <h2>BackOffice - Already Submited</h2>
+      {gallerys.map((gallery) => {
+        if (gallery.isaproved === false) {
+          return(null)
+            
+        } else {
+          return (
+            <div key={gallery._id} className="gallery-card">
+              <p>{gallery.title}</p>
+              <p>{"" + gallery.isaproved}</p>
+              <a href={gallery.link} target="_blank">
+                Go To WebSite
+              </a>
+              <img src={gallery.image} className="gallery-img"/>
               <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
             </div>
           );
         }
       })}
       <div>
+        
         <h2>Comunity Page</h2>
         {users.map((user) => {
           return (

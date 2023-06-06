@@ -20,13 +20,19 @@ function GalleryPage(props) {
   return (
     <div>
       <h2>Gallery</h2>
+      <h2>Filter By:</h2>
+      <button>topRated</button>
+      <button>moreReviews</button>
+      <button>Newest</button>
+      <button>Cronologically</button>
+
       {gallerys.map((gallery) => {
         if(gallery.isaproved){
           return (
-            <div key={gallery._id} className="gallery">
+            <div key={gallery._id} className="gallery-card">
               <p>{gallery.title}</p>
               <a href={gallery.link} target="_blank">Go To WebSite</a>
-              <img src={gallery.image}/>
+              <img src={gallery.image}  className="gallery-img"/>
               {gallery.average && <p>avg rating: {gallery.average}</p>}
               
                 <Link to={`/details/${gallery._id}`}>View Details</Link>
