@@ -21,6 +21,7 @@ function ComunityPage(props) {
             <p>{user.name}</p>
             <p>{user.description}</p>
             <p>{user.media}</p>
+            <p>This user has made: {user.reviews.lenght} Reviews</p>
           </div>
         );
       })}

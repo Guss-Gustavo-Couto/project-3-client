@@ -33,9 +33,10 @@ function GalleryPage(props) {
               <p>{gallery.title}</p>
               <a href={gallery.link} target="_blank">Go To WebSite</a>
               <img src={gallery.image}  className="gallery-img"/>
-              {gallery.average && <p>avg rating: {gallery.average}</p>}
+              <img src='".../public/images/3-star.png'/>
+              {gallery.average && <p>Rating Average : {gallery.average}</p>}
               
-                <Link to={`/details/${gallery._id}`}>View Details</Link>
+                <Link to={`/details/${gallery._id}`}>View Details{gallery.average}</Link>
                  
               
             </div>

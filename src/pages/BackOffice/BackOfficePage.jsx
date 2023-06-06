@@ -68,7 +68,6 @@ function BackOfficePage(props) {
           return (
             <div key={gallery._id} className="gallery-card">
               <p>{gallery.title}</p>
-              <p>{"" + gallery.isaproved}</p>
               <a href={gallery.link} target="_blank">
                 Go To WebSite
               </a>
