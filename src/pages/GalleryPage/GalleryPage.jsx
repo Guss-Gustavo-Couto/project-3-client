@@ -16,6 +16,22 @@ function GalleryPage(props) {
       setTopRated(false);
     } else {
       setTopRated(true);
+      setNewest(false);
+      setCronologic(false);
+      //setTopRated
+      setMoreReviews(false);
+    }
+  };
+
+  const seeMoreReviews = () => {
+    if (moreReviews) {
+      setMoreReviews(false);
+    } else {
+      setTopRated(false);
+      setNewest(false);
+      setCronologic(false);
+      //setTopRated
+      setMoreReviews(true);
     }
   };
 
@@ -29,22 +45,14 @@ function GalleryPage(props) {
       });
   };
 
-  const seeMoreReviews = () => {
-    if (moreReviews) {
-      setMoreReviews(false);
-    } else {
-      setMoreReviews(true);
-    }
-  };
-
   const getMoreReviews = () => {
     const all = axios
       .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
       .then((response) => {
         const reviews = response.data.sort(
-          (a, b) => b.reviews.length - a.reviews.length
+          (a, b) => b.gallery.reviews.length - a.gallery.reviews.length
         );
-        console.log("reviews sorted", reviews);
+        console.log("more sorted", reviews);
         setShowMore(reviews);
       });
   };
@@ -96,7 +104,7 @@ function GalleryPage(props) {
           );
         })}
 
-{moreReviews &&
+      {moreReviews &&
         showMore.map((gallery) => {
           return (
             <div key={gallery._id}>
@@ -104,8 +112,6 @@ function GalleryPage(props) {
             </div>
           );
         })}
-
-      
 
       {gallerys.map((gallery) => {
         if (gallery.isaproved) {
