@@ -41,11 +41,11 @@ function GalleryPage(props) {
     const all = axios
       .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
       .then((response) => {
-        const reviews = response.data.sort(
+        const review = response.data.sort(
           (a, b) => b.reviews.length - a.reviews.length
         );
-        console.log("reviews sorted", reviews);
-        setShowMore(reviews);
+        console.log("reviews sorted", review);
+        setShowMore(review);
       });
   };
 
@@ -96,7 +96,7 @@ function GalleryPage(props) {
           );
         })}
 
-{moreReviews &&
+      {moreReviews &&
         showMore.map((gallery) => {
           return (
             <div key={gallery._id}>
@@ -104,8 +104,6 @@ function GalleryPage(props) {
             </div>
           );
         })}
-
-      
 
       {gallerys.map((gallery) => {
         if (gallery.isaproved) {
