@@ -7,6 +7,7 @@ function GalleryPage(props) {
   const [topRated, setTopRated] = useState(false);
   const [showTop, setShowTop] = useState([]);
   const [moreReviews, setMoreReviews] = useState(false);
+  const [showMore, setShowMore] = useState([]);
   const [newest, setNewest] = useState(false);
   const [cronologic, setCronologic] = useState(false);
 
@@ -28,6 +29,26 @@ function GalleryPage(props) {
       });
   };
 
+  const seeMoreReviews = () => {
+    if (moreReviews) {
+      setMoreReviews(false);
+    } else {
+      setMoreReviews(true);
+    }
+  };
+
+  const getMoreReviews = () => {
+    const all = axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
+      .then((response) => {
+        const reviews = response.data.sort(
+          (a, b) => b.reviews.length - a.reviews.length
+        );
+        console.log("reviews sorted", reviews);
+        setShowMore(reviews);
+      });
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
@@ -37,6 +58,8 @@ function GalleryPage(props) {
       });
     seeTopRated();
     getTopRated();
+    seeMoreReviews();
+    getMoreReviews();
   }, []);
 
   if (!gallerys) {
@@ -52,9 +75,15 @@ function GalleryPage(props) {
           seeTopRated();
         }}
       >
-        topRated
+        Top Rated
       </button>
-      <button>moreReviews</button>
+      <button
+        onClick={() => {
+          seeMoreReviews();
+        }}
+      >
+        More Reviews
+      </button>
       <button>Newest</button>
       <button>Cronologically</button>
 
@@ -66,6 +95,17 @@ function GalleryPage(props) {
             </div>
           );
         })}
+
+{moreReviews &&
+        showMore.map((gallery) => {
+          return (
+            <div key={gallery._id}>
+              <p>{gallery.title}</p>
+            </div>
+          );
+        })}
+
+      
 
       {gallerys.map((gallery) => {
         if (gallery.isaproved) {

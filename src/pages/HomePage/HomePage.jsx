@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const randomLink = [Math.floor(Math.random() * allLinks.length)];
 
 
 function HomePage() {
@@ -38,7 +37,7 @@ function HomePage() {
         
         Our Mission is to save the World, a Smile at a time !"</p>
 
-      <a href={randomLink} target="_blank">I FEEL LUCKY !</a>
+      <a  target="_blank">I FEEL LUCKY !</a>
     </div>
   );
 }
