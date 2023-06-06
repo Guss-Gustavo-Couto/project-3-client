@@ -9,9 +9,9 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
       <Link to="/">
-        <button>Home</button>
+        Home
       </Link>
       <Link to="/gallery">
         <button>Gallery of Worthlessness</button>
