@@ -66,7 +66,7 @@ function SubmitPage() {
         <br />
         <label className="phrases">Image:</label><br/>
         <input className="form-style" type="file" onChange={(e) => handleFileUpload(e)} />
-        <br />
+        <br /><br />
         <label className="phrases">Description:</label><br />
         <textarea className="form-style"
           type="text"

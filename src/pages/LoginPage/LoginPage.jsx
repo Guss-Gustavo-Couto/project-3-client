@@ -19,7 +19,6 @@ function LoginPage() {
     e.preventDefault();
     const requestBody = { email, password };
 
-
     // Or using a service
     authService
       .login(requestBody)
@@ -37,40 +36,60 @@ function LoginPage() {
 
   return (
     <div className="space">
-    <div className="centered-form-content">
-    <div className="centered-contents">    
-
-    <h3 className="titles">Log In</h3>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label className="phrases">Email:</label><br/>
-        <input className="form-style" type="email" name="email" value={email} onChange={handleEmail} />
-        <br/>
-        <label className="phrases">Password:</label><br/>
-        <input className="form-style"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <br/><br/>
-        <button className="form-button" type="submit">Login</button><br/>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <br/>
-
-      <p className="phrases">Don't have an account yet?</p>
-      <Link to={"/signup"}> <button className="form-button">Sign Up</button></Link> <br/>
-      <br/>
-      
-      <div className="footer-overlay">
-        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
-       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
-      ></iframe>
-      <br/>
+      <div className="centered-form-content">
+        <div className="centered-contents">
+          <h3 className="titles">Log In</h3>
+          <form onSubmit={handleLoginSubmit}>
+            <label className="phrases">Email:</label>
+            <br />
+            <input
+              className="form-style"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+            />
+            <br />
+            <br />
+            <label className="phrases">Password:</label>
+            <br />
+            <input
+              className="form-style"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+            />
+            <br />
+            <br />
+            <button className="form-button" type="submit">
+              Login
+            </button>
+            <br />
+          </form>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <br />
+          <span className="phrases">Don't have an account yet?</span>
+          <br />
+          <br />
+          <Link to={"/signup"}>
+            {" "}
+            <button className="form-button">Sign Up</button>
+          </Link>{" "}
+          <br />
+          <br />
+          <div className="footer-overlay">
+            <img className="logo" src="/images/footer-branco.png" alt="Logo" />{" "}
+          </div>
+          <iframe
+            className="iframe"
+            title="Background"
+            src="https://smashthewalls.com/"
+          ></iframe>
+          <br />
+        </div>
+        <br />
       </div>
-      <br/>
-    </div>
     </div>
   );
 }

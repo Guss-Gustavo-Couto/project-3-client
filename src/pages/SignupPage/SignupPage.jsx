@@ -82,8 +82,8 @@ function SignupPage() {
           name="password"
           value={password}
           onChange={handlePassword}
-        />
-        <p className="jokes">{passwordPhrases[phraseIndex]}</p>
+        /><br/><br/>
+        <span className="jokes">{passwordPhrases[phraseIndex]}</span><br/><br/>
         <label className="phrases">Name:</label><br/>
         <input className="form-style" type="text" name="name" value={name} onChange={handleName} />
         <br/><br/>
@@ -93,7 +93,8 @@ function SignupPage() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       
-      <Link to={"/login"}><button className="form-button">Log In</button></Link> <p className="phrases" >Already have an account?</p>
+      <Link to={"/login"}><button className="form-button">Log In</button></Link>
+      <span className="phrases" >Already have an account?</span>
 
       
       <div className="footer-overlay">
