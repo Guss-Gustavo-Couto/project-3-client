@@ -36,27 +36,41 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">    
+
+    <h3 className="titles">Log In</h3>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
+        <label>Email:</label><br/>
+        <input className="form-style" type="email" name="email" value={email} onChange={handleEmail} />
+        <br/><br/><br/>
+        <label>Password:</label><br/>
+        <input className="form-style"
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
-
-        <button type="submit">Login</button>
+        <br/><br/><br/>
+        <button className="form-button" type="submit">Login</button><br/>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <br/>
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link to={"/signup"}> <button className="form-button">Sign Up</button></Link> <br/>
+      <br/>
+      
+      <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+      <br/>
+    </div>
     </div>
   );
 }

@@ -80,63 +80,77 @@ function BackOfficeEdit() {
   };
 
   return (
-    <div className="add-project">
-      <h1>BackOffice Page</h1>
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">
+    
+    <h3 className="titles">Backoffice /Edit Page</h3>
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
+
+        <label className="phrases">Title:</label><br/>
+        <input className="form-style"
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
+        /><br/> <br/>
 
-        <label>Image:</label>
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-        
+        <label className="phrases">Image:</label><br/>
+        <input  className="form-style" type="file" onChange={(e) => handleFileUpload(e)} /><br/>
+        <br/>
 
-        <label>Description:</label>
-        <textarea
+        <label className="phrases">Description:</label><br/>
+        <textarea className="form-style"
           type="text"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-        />
+        /><br/> <br/>
 
-        <label>Link:</label>
-        <input
+        <label className="phrases">Link:</label><br/>
+        <input className="form-style"
           type="text"
           name="link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-        />
+        /><br/> <br/><br/>
         
-        <input
+        <label className="phrases" htmlFor="isaproved">Like And Aprove !</label>
+        <input 
+          type="radio"
+          label="isaproved"
+          name="isaproved"
+          value="true"
+          onChange={(e) => setIsaproved(e.target.value)} />
+          <label className="phrases" htmlFor="isaproved">__Not Good Enought !</label>
+        <input 
           type="radio"
           label="isaproved"
           name="isaproved"
           value="false"
           onChange={(e) => setIsaproved(e.target.value)}
-        />
-        <label htmlFor="isaproved">False</label>
-        <input
-          type="radio"
-          label="isaproved"
-          name="isaproved"
-          value="true"
-          onChange={(e) => setIsaproved(e.target.value)}
-        />
-        <label htmlFor="isaproved">True</label>
+        /><br/> <br/> <br/> 
+        
 
-        <button type="submit">Submit</button>
+        <button className="form-button" type="submit">Submit</button> 
         <button
-              className="link-button"
+              className="form-button" 
               type="button"
               onClick={() => handleGalleryDelete(galleryId)}
             >
               Delete
-            </button>
+            </button><br/>
       </form>
+      <br/>
+      
+      <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+      <br/>
+    </div>
     </div>
   );
 }

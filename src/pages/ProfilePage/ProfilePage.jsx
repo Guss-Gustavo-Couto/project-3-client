@@ -86,42 +86,54 @@ function EditProfilePage() {
   };
 
   return (
-    <div>
-       {/* <iframe
-        src="https://smashthewalls.com/"
-        title="Background"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none',
-          zIndex: -1,
-          }}
-      ></iframe> */}
-      <h3>Edit the Profile</h3>
-
-      <form onSubmit={handleFormSubmit}>
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <label>Description:</label>
-        <textarea
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">
+        
+      <h3 className="titles">Edit Your Profile</h3>
+      <br/>
+      <form onSubmit={handleFormSubmit} className="">
+        <label className="phrases">Name:</label> <br/>
+        <input className="form-style" type="text" name="name" value={name} onChange={handleName} /> <br/>
+        <br/>
+        
+        <label className="phrases">Description:</label><br/>
+        <textarea  className="form-style"
           name="description"
           value={description}
           onChange={handleDescription}
-        />
-
-        <label>Media:</label>
-        <input type="text" name="media" value={media} onChange={handleMedia} />
-
-        <label>Image:</label>
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-
-        <button type="submit">Edit</button>
+          minimumRows="3"
+          minimumCols="30"
+        /><br/>
+        <br/>
+        
+        <label className="phrases">Your Personal webSpot:</label><br/>
+        <input className="form-style" type="text" name="media" value={media} onChange={handleMedia} /><br/>
+        <br/>
+        
+        <label className="phrases">Profile Image:</label><br/>
+        <input className="form-style" type="file" onChange={(e) => handleFileUpload(e)} /><br/>
+        <br/>
+        
+        <button className="form-button" type="submit">Edit</button><br/>
+        <br/>
+        <br/>
+        <br/>
       </form>
+      
+      <br/>
+      
+      <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+      <br/>
     </div>
+    </div>
+    
+    
   );
 }
 

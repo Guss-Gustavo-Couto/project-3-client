@@ -9,36 +9,24 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-<<<<<<< HEAD
-      <button>Home</button>
-=======
-        <button>Home</button>
->>>>>>> 6695f680982a373ff4da3f8af6752b859f074d03
-      </Link>
-      <Link to="/gallery">
-        <button>Gallery of Worthlessness</button>
-      </Link>
-      <Link to="/submit">
-        <button>Submit Absurdity</button>
-      </Link>
-      <Link to="/comunity">
-        <button>Our Idiotiles</button>
-      </Link>
-      
+    <div>
+    <div className="total-nav-bar">
+    <img className="logo-nav-bar" src="/images/logo-invert.png" />
+    <nav className="total-btns">
+      <a href="/" className="nav-btn">Home</a>
+      <a href="/gallery" className="nav-btn"> Gallery of Worthlessness </a>
+      <a href="/submit" className="nav-btn"> Submit Absurdity </a>
+      <a href="/comunity" className="nav-btn"> Our Idiotiles </a>
       
 
       {isLoggedIn && (
         <>
-          <button onClick={logOutUser}>Logout</button>
+          <button className="log-button1" onClick={logOutUser}>Logout</button>
 
           <Link to={`/profile/${user._id}`}>
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            <button className="log-button2"> Profile </button>
           </Link>
-
-          <span>{user && user.name}</span>
+          <img className="img-thumbnail" src={user.image} title={user.name}/>
         </>
       )}
 
@@ -46,15 +34,22 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Sign Up</button>{" "}
+            <button  className="log-button1">Sign Up</button>{" "}
           </Link>
           <Link to="/login">
             {" "}
-            <button>Login</button>{" "}
+            <button  className="log-button2">Login</button>{" "}
           </Link>
         </>
       )}
-    </nav>
+      
+      </nav>
+      <br/>
+      <img className="botton-header" src="images/header-background.png"/>
+    </div>
+    <img className="botton-header" src="images/header-background.png"/>
+    </div>
+    
   );
 }
 

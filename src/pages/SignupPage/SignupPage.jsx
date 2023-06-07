@@ -67,31 +67,43 @@ function SignupPage() {
   ];
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">
+    <h3 className="titles">New user? Let's Sign Up!</h3>
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
+        <label className="phrases">Email:</label><br/>
+        <input className="form-style" type="email" name="email" value={email} onChange={handleEmail} />
+        <br/><br/>
+        <label className="phrases">Password:</label><br/>
+        <input className="form-style"
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
-        <p>{passwordPhrases[phraseIndex]}</p>
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
-      </form>
+        <p className="jokes">{passwordPhrases[phraseIndex]}</p>
+        <label className="phrases">Name:</label><br/>
+        <input className="form-style" type="text" name="name" value={name} onChange={handleName} />
+        <br/><br/>
+        <button className="form-button" type="submit">Sign Up</button><br/>
+      </form><br/>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have an account?</p>
-      <Link to={"/login"}>Login</Link>
+      
+      <Link to={"/login"}><button className="form-button">Log In</button></Link> <p className="phrases" >Already have an account?</p>
+
+      
+      <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+      <br/>
+    </div>
     </div>
   );
 }

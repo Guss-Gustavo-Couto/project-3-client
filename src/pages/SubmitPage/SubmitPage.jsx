@@ -48,11 +48,14 @@ function SubmitPage() {
   };
 
   return (
-    <div className="add-project">
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">
       <br />
+      <h3 className="titles">Submit your Absurdities</h3>
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
+        <label className="phrases">Title:</label><br/>
+        <input className="form-style"
           type="text"
           name="title"
           value={title}
@@ -60,11 +63,11 @@ function SubmitPage() {
         />
         <br />
         <br />
-        <label>Image:</label>
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
+        <label className="phrases">Image:</label><br/>
+        <input className="form-style" type="file" onChange={(e) => handleFileUpload(e)} />
         <br />
-        <label>Description:</label>
-        <textarea
+        <label className="phrases">Description:</label><br />
+        <textarea className="form-style"
           type="text"
           name="description"
           value={description}
@@ -72,16 +75,28 @@ function SubmitPage() {
         />
         <br />
         <br />
-        <label>Link:</label>
-        <input
+        <label className="phrases">Link to Website:</label><br />
+        <input className="form-style"
           type="text"
           name="link"
           value={link}
           onChange={(e) => setLink(e.target.value)}
         />
         <br />
-        <button type="submit">Submit</button>
+        <br />
+        <br />
+        <button className="form-button" type="submit">Submit</button>
       </form>
+      <br/>
+      
+      <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+      <br/>
+    </div>
     </div>
   );
 }
