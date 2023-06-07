@@ -2,36 +2,23 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom/dist";
 import axios from "axios";
 
-function GalleryPage(props) {
-  const [gallerys, setGallerys] = useState([]);
+function GalleryPage() {
   const [topRated, setTopRated] = useState(true);
   const [showTop, setShowTop] = useState([]);
   const [moreReviews, setMoreReviews] = useState(true);
   const [showMore, setShowMore] = useState([]);
-  const [newest, setNewest] = useState(true);
-  const [showNew, setShowNew] = useState([]);
-  const [cronologic, setCronologic] = useState(true);
+  const [cronologic, setCronologic] = useState(false);
   const [showCrono, setShowCrono] = useState([]);
 
   const seeCronologic = () => {
     if (cronologic) {
       setCronologic(false);
+      setMoreReviews(false);
+      setTopRated(false);
     } else {
       setCronologic(true);
-      setNewest(false);
       setMoreReviews(false);
       setTopRated(false);
-    }
-  };
-
-  const seeNewest = () => {
-    if (newest) {
-      setNewest(false);
-    } else {
-      setNewest(true);
-      setMoreReviews(false);
-      setTopRated(false);
-      setCronologic(false);
     }
   };
 
@@ -41,7 +28,6 @@ function GalleryPage(props) {
     } else {
       setMoreReviews(true);
       setTopRated(false);
-      setNewest(false);
       setCronologic(false);
     }
   };
@@ -52,7 +38,6 @@ function GalleryPage(props) {
     } else {
       setTopRated(true);
       setMoreReviews(false);
-      setNewest(false);
       setCronologic(false);
     }
   };
@@ -61,19 +46,9 @@ function GalleryPage(props) {
     const all = axios
       .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
       .then((response) => {
-        const crono = response.data.sort((b, a) => a.createdAt + b.createdAt);
+        const crono = response.data.sort((b, a) => a.createdAt - b.createdAt);
         console.log("crono sorted", crono);
         setShowCrono(crono);
-      });
-  };
-
-  const getNewest = () => {
-    const all = axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
-      .then((response) => {
-        const newes = response.data.sort((b, a) => a.createdAt - b.createdAt);
-        console.log("new sorted", newes);
-        setShowNew(newes);
       });
   };
 
@@ -99,27 +74,14 @@ function GalleryPage(props) {
       });
   };
 
-
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
-      .then((response) => {
-        setGallerys(response.data);
-        console.log(response.data);
-      });
+    seeCronologic();
+    getCronologic();
     seeTopRated();
     getTopRated();
     seeMoreReviews();
     getMoreReviews();
-    seeNewest();
-    getNewest();
-    seeCronologic();
-    getCronologic();
   }, []);
-
-  if (!gallerys) {
-    return null;
-  }
 
   return (
     <div>
@@ -141,13 +103,6 @@ function GalleryPage(props) {
       </button>
       <button
         onClick={() => {
-          seeNewest();
-        }}
-      >
-        Newest
-      </button>
-      <button
-        onClick={() => {
           seeCronologic();
         }}
       >
@@ -156,62 +111,67 @@ function GalleryPage(props) {
 
       {topRated &&
         showTop.map((gallery) => {
-          return (
-            <div key={gallery._id}>
-              <p>{gallery.title}</p>
-            </div>
-          );
+          if (gallery.isaproved) {
+            return (
+              <div key={gallery._id} className="gallery-card">
+                <p>{gallery.title}</p>
+                <a href={gallery.link} target="_blank">
+                  Go To WebSite
+                </a>
+                <img src={gallery.image} className="gallery-img" />
+                <img src={`/images/${gallery.average}-star.png`} />
+                {gallery.average && <p>Rating Average : {gallery.average}</p>}
+
+                <Link to={`/details/${gallery._id}`}>View Details</Link>
+              </div>
+            );
+          } else {
+            return null;
+          }
         })}
+
 
       {moreReviews &&
         showMore.map((gallery) => {
-          return (
-            <div key={gallery._id}>
-              <p>{gallery.title}</p>
-            </div>
-          );
+          if (gallery.isaproved) {
+            return (
+              <div key={gallery._id} className="gallery-card">
+                <p>{gallery.title}</p>
+                <a href={gallery.link} target="_blank">
+                  Go To WebSite
+                </a>
+                <img src={gallery.image} className="gallery-img" />
+                <img src={`/images/${gallery.average}-star.png`} />
+                {gallery.average && <p>Rating Average : {gallery.average}</p>}
+
+                <Link to={`/details/${gallery._id}`}>View Details</Link>
+              </div>
+            );
+          } else {
+            return null;
+          }
         })}
 
-      {newest &&
-        showNew.map((gallery) => {
-          return (
-            <div key={gallery._id}>
-              <p>{gallery.title}</p>
-            </div>
-          );
-        })}
-
-{cronologic &&
+      {cronologic &&
         showCrono.map((gallery) => {
-          return (
-            <div key={gallery._id}>
-              <p>{gallery.title}</p>
-            </div>
-          );
+          if (gallery.isaproved) {
+            return (
+              <div key={gallery._id} className="gallery-card">
+                <p>{gallery.title}</p>
+                <a href={gallery.link} target="_blank">
+                  Go To WebSite
+                </a>
+                <img src={gallery.image} className="gallery-img" />
+                <img src={`/images/${gallery.average}-star.png`} />
+                {gallery.average && <p>Rating Average : {gallery.average}</p>}
+
+                <Link to={`/details/${gallery._id}`}>View Details</Link>
+              </div>
+            );
+          } else {
+            return null;
+          }
         })}
-
-
-      {gallerys.map((gallery) => {
-        if (gallery.isaproved) {
-          return (
-            <div key={gallery._id} className="gallery-card">
-              <p>{gallery.title}</p>
-              <a href={gallery.link} target="_blank">
-                Go To WebSite
-              </a>
-              <img src={gallery.image} className="gallery-img" />
-              <img src={`/images/${gallery.average}-star.png`} />
-              {gallery.average && <p>Rating Average : {gallery.average}</p>}
-
-              <Link to={`/details/${gallery._id}`}>
-                View Details
-              </Link>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      })}
     </div>
   );
 }

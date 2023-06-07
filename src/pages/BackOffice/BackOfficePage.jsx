@@ -7,28 +7,25 @@ function BackOfficePage(props) {
   const [gallerys, setGallerys] = useState([]);
   const [users, setUsers] = useState([]);
   const [admin, setAdmin] = useState(false);
-  const [_id, set_id] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const requestBody = {admin}
     try {
-      const body = { _id, admin };
-      await axios.put(`${process.env.REACT_APP_SERVER_URL}/isadmin`, body);
-      setAdmin(body.admin);
-      set_id(body._id);
+      await axios.put(`${process.env.REACT_APP_SERVER_URL}/admin`, requestBody);
+      setAdmin(false);
       navigate("/backoffice");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleAdmin = (e) => {
+  const handleAdmin = async (e) => {
     setAdmin(e.target.value);
   };
-  const handleId = (e) => {
-    set_id(e.target.value);
-  };
-
+  
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/admin`).then((response) => {
       setGallerys(response.data.allSites);
@@ -96,23 +93,15 @@ function BackOfficePage(props) {
                     value="false"
                     onChange={handleAdmin}
                   />
-                  <label htmlFor="admin">Normal USer</label>
+                  <label htmlFor="admin">Normal User</label>
                   <input
                     type="radio"
                     label="admin"
                     name="admin"
                     value="true"
-                    onChange={handleAdmin}
+                    onChange= {handleAdmin}
                   />
                   <label htmlFor="admin">Admin</label>
-
-                  <input
-                    type="text"
-                    label="_id"
-                    name="_id"
-                    value={user._id}
-                    onChange={handleId}
-                  />
 
                   <button type="submit">Submit</button>
                 </div>

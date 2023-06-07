@@ -8,14 +8,11 @@ function Navbar() {
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
+
   return (
     <nav>
       <Link to="/">
-<<<<<<< HEAD
-      <button>Home</button>
-=======
         <button>Home</button>
->>>>>>> 6695f680982a373ff4da3f8af6752b859f074d03
       </Link>
       <Link to="/gallery">
         <button>Gallery of Worthlessness</button>
@@ -37,7 +34,7 @@ function Navbar() {
             <button>Profile</button>
             {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
           </Link>
-
+      
           <span>{user && user.name}</span>
         </>
       )}
