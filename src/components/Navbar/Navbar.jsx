@@ -11,7 +11,11 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
+<<<<<<< HEAD
       <button>Home</button>
+=======
+        <button>Home</button>
+>>>>>>> 6695f680982a373ff4da3f8af6752b859f074d03
       </Link>
       <Link to="/gallery">
         <button>Gallery of Worthlessness</button>
