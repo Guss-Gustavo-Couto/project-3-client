@@ -49,19 +49,11 @@ function GalleryPage(props) {
     const all = axios
       .get(`${process.env.REACT_APP_SERVER_URL}/gallery`)
       .then((response) => {
-<<<<<<< HEAD
         const reviews = response.data.sort(
           (a, b) => b.gallery.reviews.length - a.gallery.reviews.length
         );
         console.log("more sorted", reviews);
         setShowMore(reviews);
-=======
-        const review = response.data.sort(
-          (a, b) => b.reviews.length - a.reviews.length
-        );
-        console.log("reviews sorted", review);
-        setShowMore(review);
->>>>>>> 5edbe3cfa00913541756a79d14efb6097c48da54
       });
   };
 
