@@ -8,6 +8,7 @@ function Navbar() {
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
+
   return (
     <div>
     <div className="total-nav-bar">
