@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-=======
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
->>>>>>> 6695f680982a373ff4da3f8af6752b859f074d03
 
 function HomePage() {
   const [gallerys, setGallerys] = useState([]);
@@ -56,27 +50,9 @@ function HomePage() {
         <br />
         Our Mission is to save the World, a Smile at a time!"</p>
 
-<<<<<<< HEAD
         <a href={gallerys.length > 0 ? gallerys[Math.floor(Math.random() * gallerys.length)].link : ''} target="_blank">
         I FEEL LUCKY!
       </a>
-=======
-      <p>
-        "Our web page, 'The Most Useless Websites in the World,' is a fun
-        community where users can share and discover the most useless websites
-        they come across on the web. Each user has the ability to submit sites
-        for approval by the application manager. On the homepage, we feature the
-        'What's New' section where users can explore the latest 4 websites that
-        have been uploaded and validated. Additionally, we have included the 'I
-        Feel Lucky' button, which allows users to randomly discover a useless
-        website to explore. Get ready to dive into the hilarious world of the
-        most useless websites in the world! Our Mission is to save the World, a
-        Smile at a time !"
-      </p>
-      <Link to={`/${randomSite}`}>
-        <button>I FEEL LUCKY!</button>
-      </Link>
->>>>>>> 6695f680982a373ff4da3f8af6752b859f074d03
     </div>
   );
 }
