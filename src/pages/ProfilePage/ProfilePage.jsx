@@ -129,7 +129,6 @@ function EditProfilePage() {
       ></iframe>
       <br/>
       </div>
-      <br/>
     </div>
     </div>
     
