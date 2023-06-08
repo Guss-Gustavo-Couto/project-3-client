@@ -38,7 +38,7 @@ function BackOfficePage(props) {
     <div className="space">
     <div className="centered-form-content">
     <div className="centered-contents">
-      <h2 className="titles">BackOffice - Waiting For Submission</h2>
+      <h2 className="titles">BackOffice - Waiting For Aproval</h2>
       <br />
       <div className="section">
         {gallerys.map((gallery) => {
@@ -50,7 +50,7 @@ function BackOfficePage(props) {
                 <p className="phrases5" >{gallery.title}</p>
                 <a href={gallery.link} target="_blank">
                 <img src={gallery.image} alt={gallery.title} className="gallery-img" />
-                </a>
+                </a><br/><br/>
                 <Link to={`/backoffice/${gallery._id}`}><button className="backoffice-button">Edit</button></Link>
                 <br/><br/>
               </div>
@@ -58,7 +58,7 @@ function BackOfficePage(props) {
           }
         })}
       </div>
-      <h2 className="titles">BackOffice - Already Submited</h2>
+      <h2 className="titles">BackOffice - Already Aproved</h2>
       <br />
       <div className="section">
         {gallerys.map((gallery) => {

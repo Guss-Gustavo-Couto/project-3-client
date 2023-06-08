@@ -84,94 +84,105 @@ function GalleryPage() {
   }, []);
 
   return (
-    <div>
-      <h2>Gallery</h2>
-      <h2>Filter By:</h2>
-      <button
+    <div className="space">
+    <div className="centered-form-content">
+    <div className="centered-contents">
+      <h2 className="titles">Gallery</h2><br/>
+      <span className="phrases">Filter By:     </span>
+      <button className="form-button"
         onClick={() => {
           seeTopRated();
         }}
       >
         Top Rated
-      </button>
-      <button
+      </button >
+      <button className="form-button"
         onClick={() => {
           seeMoreReviews();
         }}
       >
         More Reviews
-      </button>
-      <button
+      </button >
+      <button className="form-button"
         onClick={() => {
           seeCronologic();
         }}
       >
         Cronologically
-      </button>
+      </button> <br/><br/><br/><br/>
 
+      <div className = "section2">
       {topRated &&
         showTop.map((gallery) => {
           if (gallery.isaproved) {
             return (
+              
               <div key={gallery._id} className="gallery-card">
-                <p>{gallery.title}</p>
+                
                 <a href={gallery.link} target="_blank">
-                  Go To WebSite
-                </a>
                 <img src={gallery.image} className="gallery-img" />
-                <img src={`/images/${gallery.average}-star.png`} />
-                {gallery.average && <p>Rating Average : {gallery.average}</p>}
-
-                <Link to={`/details/${gallery._id}`}>View Details</Link>
+                </a>
+                <p className="gallery-title">{gallery.title}</p>
+                {gallery.average && <img className="star-img"src={`/images/${gallery.average}-star.png`} />}<br/><br/>
+                <Link to={`/details/${gallery._id}`}><button className="form-button">View Details</button></Link> <br/><br/>
+                <br/>
               </div>
+              
             );
           } else {
             return null;
           }
         })}
-
-
+        </div>
+        <div className = "section2">
       {moreReviews &&
         showMore.map((gallery) => {
           if (gallery.isaproved) {
             return (
               <div key={gallery._id} className="gallery-card">
-                <p>{gallery.title}</p>
+                
                 <a href={gallery.link} target="_blank">
-                  Go To WebSite
-                </a>
                 <img src={gallery.image} className="gallery-img" />
-                <img src={`/images/${gallery.average}-star.png`} />
-                {gallery.average && <p>Rating Average : {gallery.average}</p>}
-
-                <Link to={`/details/${gallery._id}`}>View Details</Link>
+                </a>
+                <p className="gallery-title">{gallery.title}</p>
+                {gallery.average && <img className="star-img"src={`/images/${gallery.average}-star.png`} />}<br/><br/>
+                <Link to={`/details/${gallery._id}`}><button className="form-button">View Details</button></Link> <br/><br/>
+                <br/>
               </div>
             );
           } else {
             return null;
           }
         })}
-
+        </div>
+      <div className = "section2">
       {cronologic &&
         showCrono.map((gallery) => {
           if (gallery.isaproved) {
             return (
               <div key={gallery._id} className="gallery-card">
-                <p>{gallery.title}</p>
+                
                 <a href={gallery.link} target="_blank">
-                  Go To WebSite
-                </a>
                 <img src={gallery.image} className="gallery-img" />
-                <img src={`/images/${gallery.average}-star.png`} />
-                {gallery.average && <p>Rating Average : {gallery.average}</p>}
-
-                <Link to={`/details/${gallery._id}`}>View Details</Link>
+                </a>
+                <p className="gallery-title">{gallery.title}</p>
+                {gallery.average && <img className="star-img"src={`/images/${gallery.average}-star.png`} />}<br/><br/>
+                <Link to={`/details/${gallery._id}`}><button className="form-button">View Details</button></Link> <br/><br/>
+                <br/>
               </div>
             );
           } else {
             return null;
           }
         })}
+        </div>
+          <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+    </div>
     </div>
   );
 }
