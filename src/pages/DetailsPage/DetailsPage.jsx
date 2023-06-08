@@ -67,38 +67,45 @@ function GalleryDetailsPage(props) {
   };
 
   return (
-    <div>
+    <div className="space">
+    <div className="not-centered-form-content">
+    <div className="centered-contents">
+        
+      
       {gallery && (
         <div>
-          <h2>{gallery.title}</h2>
-          <img src={gallery.image} alt={gallery.title} />
-          <h3>Visit: {gallery.link}</h3>
-          <p>{gallery.description}</p>
-          <Link to="/gallery">Back</Link>
+          <h2 phrases3>{gallery.title}</h2>
+          <img className="details-img" src={gallery.image} alt={gallery.title}/><br/>
+          <br/><span>{gallery.description}</span><br/>
+          <a href={gallery.link} target="_blank">
+              <img className="www" src="/images/www.png"></img></a><br/>
+          
+          <Link to="/gallery"><button className="form-button">Back</button></Link><br/><br/><br/>
         </div>
       )}
 
-      <h4>Leave a Review!</h4><p >Only Logged in Users can create a review:</p>
+      <h4>Leave a Review!</h4><br/>
+      <span>Only Logged in Users can create a review:</span><br/><br/>
 
       <form className="total-form" onSubmit={handleReviewSubmit}>
         <label htmlFor="rating" className="form-label">
-          <p className="bold">Rating:</p>
+          <span className="phrases">Rating:</span>
           <br />
           <input
-            className="input-field-form"
+            className="form-style2"
             type="number"
             name="rating"
             min="1"
             max="10"
           />
         </label>
-        <br />
-        <label htmlFor="description" className="form-label">
+        <br /><br/>
+        <label htmlFor="description" className="phrases">
           Content:
         </label>
         <br />
         <textarea
-          className="input-field-form"
+          className="form-style2"
           name="description"
           id="content"
           cols="30"
@@ -106,35 +113,43 @@ function GalleryDetailsPage(props) {
         ></textarea>
         <br />
         <br />
-        <button className="link-button" type="submit">
+        <button className="form-button" type="submit">
           Create the review
         </button>
       </form>
+      <br />
 
-      {gallery && gallery.reviews?.length > 0 && <h4 className="bold">Last Reviews!</h4>}
+      {gallery && gallery.reviews?.length > 0 && <h4 className="titles">Last Reviews!</h4>}
       {gallery &&
         gallery.reviews.map((review) => (
           <div key={review._id} className="width-percentage">
-            <span className="bold">By: </span>
-            <span>{review.author.name}</span>
+            <span className="phrases">By: </span>
+            <span className="phrases3">{review.author.name}</span>
             <br />
-            <span className="bold">Rating: </span>
-            <span>{review.rating}</span>
-            <br />
-            <span className="bold">Review: </span>
-            <span>{review.description}</span>
+            <span className="phrases">Rating: </span>
+            <span className="phrases3">{review.rating}</span>
+            <br /><br />
+            <span className="phrases">Review: </span><br/>
+            <span className="phrases3">{review.description}</span>
             <br />
             <br />
             <button
-              className="link-button"
+              className="form-button"
               type="button"
               onClick={() => handleReviewDelete(review._id)}
             >
               Delete
             </button>
-            <br />
+            <br /> <br /> <br />
           </div>
         ))}
+    <div className="footer-overlay">
+        <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+      ></iframe>
+      <br/>
+      </div>
+    </div>
     </div>
   );
 }

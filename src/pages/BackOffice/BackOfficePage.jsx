@@ -51,7 +51,7 @@ function BackOfficePage(props) {
                 <a href={gallery.link} target="_blank" rel="noopener noreferrer">
                   Go To WebSite
                 </a>
-                <img className="back-img" src={gallery.image} alt={gallery.title}  />
+                <img src={gallery.image} alt={gallery.title} className="gallery-img" />
                 <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
               </div>
             );
@@ -71,7 +71,7 @@ function BackOfficePage(props) {
                 <a href={gallery.link} target="_blank" rel="noopener noreferrer">
                   Go To WebSite
                 </a>
-                <img class="back-img" src={gallery.image} alt={gallery.title} className="gallery-img" />
+                <img src={gallery.image} alt={gallery.title} className="gallery-img" />
                 <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
               </div>
             );
@@ -79,12 +79,12 @@ function BackOfficePage(props) {
         })}
       </div>
 
-      <h2>Active Users</h2>
+      <h2>Comunity Page</h2>
       <br />
       <div className="section">
         {users.map((user) => (
           <div key={user._id}>
-            <img className="back-img" style={{width:"100px" }} src={user.image} alt={user.name} />
+            <img class="img-backoffice" src={user.image} alt={user.name} />
             <p>{user.name}</p>
             <p>{user.email}</p>
 

@@ -27,8 +27,8 @@ function Navbar() {
           <Link to={`/profile/${user._id}`}>
             <button className="log-button2"> Profile </button>
           </Link>
-          <img className="img-thumbnail" src={user.image} title={user.name}/>
-        </>
+          {/* <img className="img-thumbnail" src={user.image} title={user.name}/> */}
+        </> 
       )}
 
       {!isLoggedIn && (

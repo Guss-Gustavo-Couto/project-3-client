@@ -57,12 +57,15 @@ function HomePage() {
           
             <span className="home-cards">
             <img
-              style={{ width: "30%" }}
+              style={{ width: "70%" }}
               src={gallery.image}
               alt={gallery.title}
             />
-            <h5>{gallery.title}</h5>
-            <a href={gallery.link}>view site</a><br/>
+            <br/> <h3>{gallery.title}</h3> 
+            <a href={gallery.link} target="_blank">
+              <img className="www" src="/images/www.png"></img></a><br/>
+              
+            
             </span>
           
         );

@@ -1,8 +1,14 @@
 .App {
-  
+  text-align: center;
   font-family: verdana, arial, sans-serif;
   position: relative;
 }
+
+.www{
+  scale:30%;
+  margin: 0px;
+}
+
 /* NAV BAR  ---------------------------- */
 
 .nav-btn{
@@ -33,6 +39,7 @@
   white-space: nowrap;
   flex: 1;
 }
+
 .log-button1:hover {
   color: rgb(164, 164, 164);
 }
@@ -99,7 +106,7 @@
 }
 
 .centered-contents{
-  margin-left: 10%;
+  margin-left: 8%;
 }
 
 .space {
@@ -169,6 +176,44 @@
 .timer {
  font-size: 3rem;
  color: dimgray;
+}
+
+.phrases2 {
+  margin-left:25%;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+  max-width: 40ch;
+  word-wrap: break-word;
+ }
+
+ .phrases3 {
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgb(48, 48, 48);
+  max-width: 20ch;
+  word-wrap: break-word;
+ }
+
+ .phrases4 {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bolder;
+  color: rgb(48, 48, 48);
+  max-width: 20ch;
+  word-wrap: break-word;
+ }
+
+ .titles2{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: rgb(43, 43, 43);
+}
+
+.details-img{
+  width: 45vw;
 }
 
 /* HOME PAGE  ---------------------- */
@@ -269,6 +314,14 @@
 }
 
 
+.form-style2{
+  text-align: center;
+  background: none;
+  width: 60%;
+  border: none;
+  border-bottom: 2px solid rgb(164, 164, 164);
+}
+
 /* FOOTER ------------------------------- */
 .footer-overlay {
   position: fixed;
@@ -296,35 +349,4 @@
 .logo {
   width: 100vw;
   max-height: 100%;
-}
-
-
-.check1{
-  margin-top: 5px;
-  
-  margin-left: -3px; 
-}
-
-.check2{
-  margin-top: 5px;
-  
-  margin-left: 3px; 
-}
-
-.check3{
-  margin-top: 0px;
-  
-  margin-left: 5px;
-}
-
-.check4{
-  margin-top: 2px;
-  
-  margin-left: 8px; 
-}
-
-.check5{
-  margin-top: -5px;
-  
-  margin-left: 3px; 
 }
