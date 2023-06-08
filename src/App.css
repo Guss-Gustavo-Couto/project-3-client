@@ -205,6 +205,14 @@
   word-wrap: break-word;
  }
 
+ .phrases5 {
+  font-size: 0.9rem;
+  font-weight: bolder;
+  color: rgb(43, 43, 43);
+  max-width: 14ch;
+  word-wrap: break-word;
+ }
+
  .titles2{
   text-align: center;
   font-size: 1.5rem;
@@ -271,7 +279,7 @@
 }
 
 .star-img {
-  width: 50%
+  width: 30%
 }
 
 /* BACKOFFICE CARDS  ---------------------- */
@@ -286,7 +294,40 @@
   margin-bottom: 20px;
 }
 
+.phrases6 {
+  font-size: 0.8rem;
+  font-weight: bolder;
+  color: rgb(43, 43, 43);
+  max-width: 34ch;
+  word-wrap: break-word;
+ }
 
+.phrases7 {
+  font-size: 0.6rem;
+  font-weight: bolder;
+  color: rgb(43, 43, 43);
+  max-width: 34ch;
+  word-wrap: break-word;
+ }
+
+.backoffice-button{
+  margin-top: -80px;
+  margin-bottom: 35px;
+  margin-left: 35%;
+  flex:1;
+}
+
+.backoffice-button:hover {
+  color: rgb(164, 164, 164);
+}
+
+.www2{
+  scale:35%;
+  margin-left: -10px;
+  margin-top: 10px;
+  margin-bottom: -25px;
+  flex:1;
+}
 
 .each-photo {
   padding: 10px;
@@ -304,7 +345,7 @@
 }
 
 .stars-image {
-  width: 40%;
+  width: 10%;
 }
 
 .maps {
@@ -350,3 +391,9 @@
   width: 100vw;
   max-height: 100%;
 }
+
+.www{
+  margin-top: -45px;
+  margin-bottom: -25px;
+}
+

@@ -38,7 +38,7 @@ function BackOfficePage(props) {
     <div className="space">
     <div className="centered-form-content">
     <div className="centered-contents">
-      <h2>BackOffice - Waiting For Submission</h2>
+      <h2 className="titles">BackOffice - Waiting For Submission</h2>
       <br />
       <div className="section">
         {gallerys.map((gallery) => {
@@ -47,18 +47,18 @@ function BackOfficePage(props) {
           } else {
             return (
               <div key={gallery._id} className="gallery-card">
-                <p>{gallery.title}</p>
-                <a href={gallery.link} target="_blank" rel="noopener noreferrer">
-                  Go To WebSite
-                </a>
+                <p className="phrases5" >{gallery.title}</p>
+                <a href={gallery.link} target="_blank">
                 <img src={gallery.image} alt={gallery.title} className="gallery-img" />
-                <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
+                </a>
+                <Link to={`/backoffice/${gallery._id}`}><button className="backoffice-button">Edit</button></Link>
+                <br/><br/>
               </div>
             );
           }
         })}
       </div>
-      <h2>BackOffice - Already Submited</h2>
+      <h2 className="titles">BackOffice - Already Submited</h2>
       <br />
       <div className="section">
         {gallerys.map((gallery) => {
@@ -67,26 +67,25 @@ function BackOfficePage(props) {
           } else {
             return (
               <div key={gallery._id} className="gallery-card">
-                <p>{gallery.title}</p>
-                <a href={gallery.link} target="_blank" rel="noopener noreferrer">
-                  Go To WebSite
-                </a>
+                <p className="phrases5">{gallery.title}</p>
+                <a href={gallery.link} target="_blank">
                 <img src={gallery.image} alt={gallery.title} className="gallery-img" />
-                <Link to={`/backoffice/${gallery._id}`}>Edit</Link>
+                </a>
+                <Link to={`/backoffice/${gallery._id}`}><button className="backoffice-button">Edit</button></Link>
               </div>
             );
           }
         })}
       </div>
 
-      <h2>Comunity Page</h2>
+      <h2 className="titles">Users Permissions</h2>
       <br />
       <div className="section">
         {users.map((user) => (
           <div key={user._id}>
             <img class="img-backoffice" src={user.image} alt={user.name} />
-            <p>{user.name}</p>
-            <p>{user.email}</p>
+            <p className="phrases6">{user.name}</p>
+            <p className="phrases7">{user.email}</p>
 
             <form onSubmit={handleSubmit}>
               <input
@@ -97,7 +96,7 @@ function BackOfficePage(props) {
                 checked={!admin}
                 onChange={handleAdmin}
               />
-              <label htmlFor="admin">Normal User</label>
+              <label className="phrases6" htmlFor="admin">Normal User</label>
               <input
                 type="radio"
                 label="admin"
@@ -106,9 +105,11 @@ function BackOfficePage(props) {
                 checked={admin}
                 onChange={handleAdmin}
               />
-              <label htmlFor="admin">Admin</label>
-
+              <label className="phrases6" htmlFor="admin">Admin</label>
+              
               <button type="submit">Submit</button>
+              <br></br>
+              <br></br>
             </form>
           </div>
         ))}
