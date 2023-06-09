@@ -34,9 +34,12 @@ function HomePage() {
         the application manager. On the homepage, we feature the 'What's New' section where users can explore the latest
         4 websites that have been uploaded and validated. Additionally, we have included the 'I Feel Lucky' button,
         which allows users to randomly discover a useless website to explore. Get ready to dive into the hilarious world
-        of the most useless websites in the world!</p> <br/><br/>
+        of the most useless websites in the world!</p> <br/>
 
         </div>
+        <a href={gallerys.length > 0 ? gallerys[Math.floor(Math.random() * gallerys.length)].link : ''} target="_blank">
+        <button className="form-button"> I Feel Lucky! </button></a>
+        <br/><br/>
     </div>
              
     <br/>
@@ -49,15 +52,14 @@ function HomePage() {
       
       <br/>
       <br/>
-
-      <span className="home-cards">
+      <div className = "section2">
+     
       {gallerys.slice(0, 4).map((gallery) => {
         
         return (
           
-            <span className="home-cards">
-            <img
-              style={{ width: "70%" }}
+            <div className="gallery-card2">
+            <img className="gallery-img"
               src={gallery.image}
               alt={gallery.title}
             />
@@ -66,22 +68,19 @@ function HomePage() {
               <img className="www" src="/images/www.png"></img></a><br/>
               
             
-            </span>
+            </div>
           
         );
         
       })}
-      </span>
       
+      </div>
       
       <br/>
-        <a href={gallerys.length > 0 ? gallerys[Math.floor(Math.random() * gallerys.length)].link : ''} target="_blank">
-        <button className="form-button"> I Feel Lucky! </button></a>
-      <br/><br/>
 
       <div className="footer-overlay">
         <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
-       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/" /* Authorized use by the artist: by:mike@bod.ge */ 
       ></iframe>
       <br/>
       </div> 

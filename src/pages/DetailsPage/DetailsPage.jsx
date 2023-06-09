@@ -2,8 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-
 function GalleryDetailsPage(props) {
   const [gallery, setGallery] = useState(null);
 
@@ -145,7 +143,7 @@ function GalleryDetailsPage(props) {
         ))}
     <div className="footer-overlay">
         <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
-       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/" /* Authorized use by the artist: by:mike@bod.ge */ 
       ></iframe>
       <br/>
       </div>

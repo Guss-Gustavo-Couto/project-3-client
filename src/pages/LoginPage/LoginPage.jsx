@@ -84,7 +84,7 @@ function LoginPage() {
           <iframe
             className="iframe"
             title="Background"
-            src="https://smashthewalls.com/"
+            src="https://smashthewalls.com/" /* Authorized use by the artist: by:mike@bod.ge */ 
           ></iframe>
           <br />
         </div>

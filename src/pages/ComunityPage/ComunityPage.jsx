@@ -30,7 +30,7 @@ function ComunityPage(props) {
       })}
     <div className="footer-overlay">
         <img className="logo" src="/images/footer-branco.png" alt="Logo"  /> </div>
-       <iframe className="iframe" title="Background" src="https://smashthewalls.com/"
+       <iframe className="iframe" title="Background" src="https://smashthewalls.com/" /* Authorized use by the artist: by:mike@bod.ge */ 
       ></iframe>
       <br/>
       </div>
